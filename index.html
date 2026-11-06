@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#101619" />
+  <title>Witchlight — The Hollow March</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app">
+    <canvas id="game" aria-label="Witchlight action game"></canvas>
+    <div class="grain"></div>
+    <header class="topbar">
+      <div class="brand"><div class="sigil">✦</div><div><span class="eyebrow">THE HOLLOW MARCH</span><strong>WITCHLIGHT</strong></div></div>
+      <div class="run-stats"><span class="stat-chip"><i class="dot gold"></i><b id="goldCount">0</b><small>SHARDS</small></span><span class="stat-chip"><i class="dot violet"></i><b id="killCount">0</b><small>FELLED</small></span></div>
+      <button class="icon-btn" id="soundBtn" aria-label="Toggle sound">♫</button>
+    </header>
+    <section class="hud">
+      <div class="hero-panel">
+        <div class="portrait">☽<span class="portrait-mark">✦</span></div>
+        <div class="hero-info"><div class="hero-line"><span>THE WHITE WOLF</span><span id="levelText">LV 01</span></div><div class="bar hp"><div id="hpFill"></div></div><div class="bar xp"><div id="xpFill"></div></div><div class="bar-labels"><span id="hpText">100 / 100 VITALITY</span><span id="xpText">0 / 40 XP</span></div></div>
+      </div>
+      <div class="stage-panel"><span class="eyebrow">CURRENT EXPEDITION</span><strong id="stageText">THE ASHEN FEN <em>· 01</em></strong><div class="stage-bottom"><span id="timerText">00:00</span><span class="threat"><i></i> <b id="threatText">QUIET</b></span></div></div>
+      <div class="weapon-panel"><span class="eyebrow">STEEL & SIGN</span><div class="equipped"><span class="weapon-icon" id="weaponIcon">⚔</span><div><strong id="weaponName">WOLF'S STEEL</strong><small id="weaponSub">BALANCED · AUTO STRIKE</small></div></div><div class="ability-row"><span class="ability active" id="sign1">✧</span><span class="ability" id="sign2">◈</span><span class="ability" id="sign3">ᛟ</span><span class="ability-hint">SIGNS</span></div></div>
+    </section>
+    <div class="boss-bar hidden" id="bossBar"><div class="boss-caption"><span>✦ THE DREAD KNIGHT</span><b id="bossHpText">100%</b></div><div class="bar"><div id="bossHpFill"></div></div></div>
+    <div class="center-message" id="toast"></div>
+    <div class="controls-hint"><span>WASD / ARROWS</span><i>MOVE</i><span>SPACE</span><i>DODGE</i><span>1 · 2 · 3</span><i>SIGNS</i></div>
+    <div class="mobile-controls" id="mobileControls"><div class="stick" id="stick"><div class="stick-knob"></div></div><div class="mobile-actions"><button id="dodgeBtn">↗<small>DODGE</small></button><button id="signBtn">✧<small>SIGN</small></button></div></div>
+    <div class="overlay" id="startScreen"><div class="modal intro-modal"><div class="ornament">✦ ━━━━━━━ ✦</div><div class="kicker">A WITCHER'S LAST HUNT</div><h1>THE<br><i>HOLLOW</i><br>MARCH</h1><p>In the drowned lands, the dead do not rest.<br>Steel your nerve. Follow the witchlight.</p><div class="intro-meta"><span>ROGUELIKE SURVIVAL</span><span>·</span><span>ENDLESS NIGHT</span></div><button class="primary-btn" id="startBtn">BEGIN THE HUNT <span>→</span></button><button class="text-btn" id="treeBtn">✦ &nbsp;WITCHER'S CODEX <b id="metaXpText">0 EARNED XP</b></button><div class="control-note">MOVE <kbd>WASD</kbd> &nbsp; DODGE <kbd>SPACE</kbd> &nbsp; SIGNS <kbd>1–3</kbd></div></div></div>
+    <div class="overlay hidden" id="cardScreen"><div class="modal card-modal"><div class="kicker">THE FEN FALLS QUIET — CHOOSE YOUR LESSON</div><h2>THE HUNT <i>EVOLVES</i></h2><p class="modal-sub">A new power, drawn from the old blood.</p><div class="cards" id="cards"></div><div class="reroll-line"><span>✦ Level <b id="cardLevel">2</b> reached</span><span>3 relics from the turning wheel</span></div></div></div>
+    <div class="overlay hidden" id="codexScreen"><div class="modal codex-modal"><button class="close-btn" id="closeCodex">×</button><div class="kicker">LEGACY PROGRESS · PERSISTENT</div><h2>WITCHER'S <i>CODEX</i></h2><p class="modal-sub">Spend earned experience on permanent gifts. Your legend carries between hunts.</p><div class="legacy-summary"><span>UNSPENT EXPERIENCE</span><b>✦ <span id="legacyXp">0</span></b></div><div class="skill-grid" id="skillGrid"></div><div class="codex-foot"><span>RUN XP earned on defeat + level clear</span><button class="text-btn" id="resetMeta">RESET LEGACY</button></div></div></div>
+    <div class="overlay hidden" id="deathScreen"><div class="modal death-modal"><div class="ornament">☠ ━━━━━━━ ☠</div><div class="kicker">THE MARCH CLAIMS ANOTHER</div><h2>THE HUNT<br><i>IS OVER</i></h2><p class="modal-sub">The dead will remember your name.</p><div class="run-summary"><div><span>ENEMIES FELLED</span><b id="finalKills">0</b></div><div><span>LEVELS CLEARED</span><b id="finalStages">0</b></div><div><span>XP GATHERED</span><b id="finalXp">0</b></div></div><div class="legacy-earned">✦ &nbsp; <span id="earnedXp">0</span> EXPERIENCE ADDED TO YOUR CODEX</div><button class="primary-btn" id="againBtn">RISE AGAIN <span>→</span></button><button class="text-btn" id="deathCodex">OPEN THE CODEX</button></div></div>
+    <div class="flash" id="flash"></div>
+    <div class="mobile-rotate">↻<span>ROTATE FOR THE BEST VIEW</span></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
